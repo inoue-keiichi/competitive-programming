@@ -1,27 +1,26 @@
 function searchInsert(nums: number[], target: number): number {
-  let min = 0;
-  let max = nums.length - 1;
+  let minPointer = 0;
+  let maxPointer = nums.length - 1;
 
   while (true) {
-    const middle = Math.floor((max + min) / 2);
-    const num = nums[middle];
+    const middlePointer = Math.floor((maxPointer + minPointer) / 2);
 
-    if (max - min <= 1) {
-      if (target <= nums[min]) {
-        return min;
-      } else if (target <= nums[max]) {
-        return max;
+    if (maxPointer - minPointer <= 1) {
+      if (target <= nums[minPointer]) {
+        return minPointer;
+      } else if (target <= nums[maxPointer]) {
+        return maxPointer;
       } else {
-        return max + 1;
+        return maxPointer + 1;
       }
     }
 
-    if (num > target) {
-      max = middle;
-    } else if (num < target) {
-      min = middle;
+    if (target < nums[middlePointer]) {
+      maxPointer = middlePointer;
+    } else if (target > nums[middlePointer]) {
+      minPointer = middlePointer;
     } else {
-      return middle;
+      return middlePointer;
     }
   }
 }
