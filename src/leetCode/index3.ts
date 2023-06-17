@@ -1,6 +1,6 @@
 // Longest Substring Without Repeating Characters
 
-function lengthOfLongestSubstring(s: string): number {
+export function lengthOfLongestSubstring(s: string): number {
   const subArray: string[] = [];
   let counter = 0;
 
